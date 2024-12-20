@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - CampusConnect</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #f5f7fa, #e4ebf5); /* Soft gradient */
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Color Variables */
+    :root {
+      --main-color: #4A90E2; /* Primary blue */
+      --secondary-color: #1E75BB; /* Darker blue */
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --input-border: #ddd;
+    }
+
+    /* Card Container */
+    .card {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--main-color);
+    }
+
+    .card form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card input[type="email"],
+    .card input[type="password"] {
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 25px;
+      border: 1px solid var(--input-border);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card input[type="email"]:focus,
+    .card input[type="password"]:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card button {
+      padding: 15px;
+      font-size: 1rem;
+      background: var(--main-color);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .card button:hover {
+      background: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .card .alt-links {
+      margin-top: 15px;
+    }
+
+    .card .alt-links a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .card .alt-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sign In Card -->
+  <div class="card">
+    <h2>Sign In</h2>
+    <form action="/signin" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <input type="password" name="password" placeholder="Enter your password" required>
+      <button type="submit">Sign In</button>
+    </form>
+    <div class="alt-links">
+      <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> <a href="/">CampusConnect</a>. All rights reserved.</p>
+  </footer>
+</body>
+</html>

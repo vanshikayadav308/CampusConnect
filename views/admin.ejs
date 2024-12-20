@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #4A90E2;
+      color: white;
+    }
+    .btn {
+      padding: 5px 10px;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-delete {
+      background: #ff4d4d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+
+  <h2>All Users</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Actions</th>
+    </tr>
+    <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.isAdmin ? 'Yes' : 'No' %></td>
+        <td>
+          <form action="/admin/delete-user/<%= user.id %>" method="POST">
+            <button class="btn btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+
+  <h2>All Feedback</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Feedback</th>
+      <th>Actions</th>
+    </tr>
+    <% feedback.forEach(item => { %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.username %></td>
+        <td><%= item.content %></td>
+        <td>
+          <form action="/admin/delete-feedback/<%= item.id %>" method="POST">
+            <button class="btn btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

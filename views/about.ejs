@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - CampusConnect</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(to bottom, #f5f7fa, #e4ebf5); /* Soft gradient */
+      color: #333;
+    }
+
+    /* Color Variables */
+    :root {
+      --main-color: #4A90E2;
+      --secondary-color: #1E75BB;
+      --card-bg: #ffffff;
+      --text-color: #333;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: var(--main-color);
+      color: white;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links a.active {
+      background: var(--secondary-color);
+    }
+
+    .nav-links a:hover {
+      background: var(--secondary-color);
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-bar input {
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      width: 200px;
+      transition: width 0.3s;
+    }
+
+    .search-bar input:focus {
+      width: 300px;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      background: white;
+      color: var(--main-color);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    /* Hero Section */
+    header {
+      height: 60vh;
+      background: url('https://source.unsplash.com/1600x900/?team,collaboration') no-repeat center center/cover;
+      background-attachment: fixed; /* Parallax effect */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Overlay */
+      z-index: -1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: white;
+      opacity: 0.9;
+    }
+
+    /* Mission Section */
+    .mission {
+      text-align: center;
+      padding: 50px 20px;
+      background: var(--card-bg);
+    }
+
+    .mission h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .mission-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .mission-icons div {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 200px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .mission-icons div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .mission-icons i {
+      font-size: 2rem;
+      color: var(--main-color);
+      margin-bottom: 10px;
+    }
+
+    /* Team Section */
+    .team {
+      text-align: center;
+      padding: 50px 20px;
+      background: var(--background);
+    }
+
+    .team h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .team .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .team .member {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 250px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .team .member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .team img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .team h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .team p {
+      font-size: 1rem;
+    }
+    
+  /* Milestones Section */
+  .milestones {
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--card-bg);
+  }
+
+  .milestones h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+  }
+
+  .milestone-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .milestone {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .milestone:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .milestone i {
+    font-size: 3rem;
+    color: var(--main-color);
+    margin-bottom: 15px;
+  }
+
+  .milestone h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+
+  .milestone p {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  .feedback {
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--background);
+    color: var(--text-color);
+  }
+
+  .feedback h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .feedback p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .feedback form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group textarea,
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid var(--main-color);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .form-group textarea {
+    height: 150px;
+    resize: none;
+  }
+
+  .form-group textarea:focus,
+  .form-group input:focus {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+  }
+
+  .feedback button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s;
+  }
+
+  .feedback button:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+  }
+  .cta-home {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s;
+    display: inline-block;
+  }
+
+  .cta-home:hover {
+    background: var(--main-color);
+    transform: scale(1.05);
+  }
+    /* Footer */
+    footer {
+      background: var(--main-color);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="/" class="nav-brand">CampusConnect</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about" class="active">About</a>
+      <% if (session && session.user) { %>
+        <a href="/feedback">Feedback</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/signin">Sign In</a>
+        <a href="/signup">Sign Up</a>
+      <% } %>
+    </div>
+    <form action="/search" method="GET" class="search-bar">
+      <input type="text" name="q" placeholder="Search resources...">
+      <button type="submit">Search</button>
+    </form>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>About CampusConnect</h1>
+    <p>Empowering collaboration and learning for the next generation.</p>
+    <a href="/" class="cta-home">Go to Home</a>
+  </header>
+
+  <!-- Mission Section -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <div class="mission-icons">
+      <div>
+        <i class="fas fa-graduation-cap"></i>
+        <p>Education First</p>
+      </div>
+      <div>
+        <i class="fas fa-users"></i>
+        <p>Community Focus</p>
+      </div>
+      <div>
+        <i class="fas fa-rocket"></i>
+        <p>Innovation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="public/images/john.jpg" alt="">
+        <h3>John Doe</h3>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="member">
+        <img src="public/images/girl.jpg" alt="">
+        <h3>Jane Smith</h3>
+        <p>Lead Developer</p>
+      </div>
+      <div class="member">
+        <img src="public/images/girl2.jpg" alt="">
+        <h3>Emily Johnson</h3>
+        <p>Marketing Manager</p>
+      </div>
+    </div>
+  </section>
+<!-- Milestones Achieved Section -->
+<section class="milestones">
+    <h2>Milestones Achieved</h2>
+    <div class="milestone-grid">
+      <div class="milestone">
+        <i class="fas fa-user-graduate"></i>
+        <h3>10,000+ Students</h3>
+        <p>Our platform has connected over 10,000 students across multiple campuses.</p>
+      </div>
+      <div class="milestone">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>500+ Courses</h3>
+        <p>Access a variety of educational resources and courses tailored for every learner.</p>
+      </div>
+      <div class="milestone">
+        <i class="fas fa-award"></i>
+        <h3>Top Awards</h3>
+        <p>Recognized as one of the top educational platforms in 2024 by EduAwards.</p>
+      </div>
+      <div class="milestone">
+        <i class="fas fa-handshake"></i>
+        <h3>50+ Partnerships</h3>
+        <p>Collaborating with universities and organizations to expand learning opportunities.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Feedback Form Section -->
+<section class="feedback">
+    <h2>We Value Your Feedback</h2>
+    <p>Your input helps us improve CampusConnect. Share your thoughts below!</p>
+    <form action="/feedback" method="POST">
+      <div class="form-group">
+        <textarea name="feedback" placeholder="Write your feedback here..." required></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name ">
+      </div>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> CampusConnect. All rights reserved.</p>
+  </footer>
+</body>
+</html>
