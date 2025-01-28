@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" /> <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" /> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script><!-- AOS CSS -->
   <style>
     /* General Reset */
     * {
@@ -104,108 +108,150 @@
       background: var(--secondary-color);
       color: white;
     }
+/* Parallax Hero Section */
+.hero-parallax {
+  height: 100vh; /* Full viewport height */
+  background: url('images/about.jpg') no-repeat center center fixed;
+  background-size: cover; /* Ensures the image fits well */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
 
-    /* Hero Section */
-    header {
-      height: 100vh;
-      background: url('https://source.unsplash.com/1600x900/?campus,students') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
+.hero-content {
+  z-index: 2; /* Places content above the background */
+  max-width: 600px;
+  padding: 2em;
+  background: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent background for readability */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Overlay */
-      z-index: -1;
-    }
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text contrast */
+  z-index: 1;
+}
 
-    header h1 {
-      font-size: 4rem;
-      color: white;
-      margin-bottom: 20px;
-      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+.hero-parallax h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
 
-    header p {
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 30px;
-      opacity: 0.9;
-    }
+.hero-parallax p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
 
-    header .cta {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      color: white;
-      background: var(--secondary-color);
-      border: none;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s;
-    }
+.cta {
+  display: inline-block;
+  padding: 0.8em 2em;
+  font-size: 1em;
+  color: #1a73e8;
+  background: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    header .cta:hover {
-      background: var(--main-color);
-      transform: scale(1.05);
-    }
+.cta:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
 
-    /* Features Section */
-    .features {
-      text-align: center;
-      padding: 80px 20px;
-      background: var(--background);
-    }
+/* Features Section with Stickers */
+.features {
+  text-align: center;
+  padding: 4em 1em;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  color: #333;
+}
 
-    .features h2 {
-      font-size: 2.8rem;
-      margin-bottom: 50px;
-      color: var(--text-color);
-    }
+.features h2 {
+  font-size: 2.8em;
+  margin-bottom: 0.5em;
+  color: #1a73e8;
+  font-weight: bold;
+}
 
-    .features .feature-grid {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.features-description {
+  font-size: 1.2em;
+  margin-bottom: 3em;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-    .features .feature {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 30px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
 
-    .features .feature:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
+.feature {
+  flex: 1 1 calc(33% - 2em);
+  max-width: 300px;
+  padding: 2em;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  cursor: pointer;
+}
 
-    .features .feature i {
-      font-size: 3rem;
-      color: var(--main-color);
-      margin-bottom: 15px;
-    }
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+}
 
-    .features .feature h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-    }
+.sticker-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f8ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticker-container img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover .sticker-container img {
+  transform: scale(1.1);
+}
+
+.feature h3 {
+  font-size: 1.5em;
+  margin: 1em 0 0.5em;
+  color: #333;
+  font-weight: bold;
+}
+
+.feature p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.5;
+}
+
 
     /* Statistics Section */
     .stats {
@@ -278,34 +324,48 @@
   </nav>
   
 
-  <!-- Hero Section -->
-  <header data-aos="fade-up">
+  <!-- Hero Section with Parallax Background -->
+<header class="hero-parallax" data-aos="fade-up">
+  <div class="hero-content">
     <h1>Welcome to CampusConnect</h1>
     <p>Your one-stop platform for seamless campus collaboration.</p>
     <a href="/signup" class="cta">Get Started</a>
-  </header>
+  </div>
+</header>
 
-  <!-- Features Section -->
-  <section class="features" data-aos="fade-right">
-    <h2>Our Features</h2>
-    <div class="feature-grid">
-      <div class="feature" data-aos="zoom-in">
-        <i class="fas fa-comments"></i>
-        <h3>Feedback System</h3>
-        <p>Share your thoughts to improve our services.</p>
+
+ <!-- Features Section -->
+<section class="features" data-aos="fade-right">
+  <h2>Our Features</h2>
+  <p class="features-description">
+    Discover tools designed to enhance your learning experience and connect with ease.
+  </p>
+  <div class="feature-grid">
+    <div class="feature" data-aos="zoom-in">
+      <div class="sticker-container">
+        <img src="images/feedback-sticker.png" alt="Feedback Sticker" />
       </div>
-      <div class="feature" data-aos="zoom-in">
-        <i class="fas fa-search"></i>
-        <h3>Search Resources</h3>
-        <p>Find the best materials to boost your learning.</p>
-      </div>
-      <div class="feature" data-aos="zoom-in">
-        <i class="fas fa-user-circle"></i>
-        <h3>User Accounts</h3>
-        <p>Track your activities and personalize your experience.</p>
-      </div>
+      <h3>Feedback System</h3>
+      <p>Share your thoughts to improve our services.</p>
     </div>
-  </section>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="200">
+      <div class="sticker-container">
+        <img src="images/search-sticker.png" alt="Search Sticker" />
+      </div>
+      <h3>Search Resources</h3>
+      <p>Find the best materials to boost your learning.</p>
+    </div>
+    <div class="feature" data-aos="zoom-in" data-aos-delay="400">
+      <div class="sticker-container">
+        <img src="images/user-sticker.png" alt="User Sticker" />
+      </div>
+      <h3>User Accounts</h3>
+      <p>Track your activities and personalize your experience.</p>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- Statistics Section -->
   <section class="stats" data-aos="fade-up">
