@@ -105,82 +105,179 @@
       color: white;
     }
 
-    /* Hero Section */
-    header {
-      height: 60vh;
-      background: url('https://source.unsplash.com/1600x900/?team,collaboration') no-repeat center center/cover;
-      background-attachment: fixed; /* Parallax effect */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
+    /* Parallax Hero Section */
+.hero-parallax {
+  height: 100vh; /* Full viewport height */
+  background: url('images/main.png') no-repeat center center fixed;
+  background-size: cover; /* Ensures the image fits well */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Overlay */
-      z-index: -1;
-    }
+.hero-content {
+  z-index: 2; /* Places content above the background */
+  max-width: 600px;
+  padding: 2em;
+  background: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent background for readability */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-    header h1 {
-      font-size: 3rem;
-      color: white;
-      margin-bottom: 10px;
-      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+.hero-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text contrast */
+  z-index: 1;
+}
 
-    header p {
-      font-size: 1.2rem;
-      color: white;
-      opacity: 0.9;
-    }
+.hero-parallax h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
 
-    /* Mission Section */
-    .mission {
-      text-align: center;
-      padding: 50px 20px;
-      background: var(--card-bg);
-    }
+.hero-parallax p {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
 
-    .mission h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+.cta {
+  display: inline-block;
+  padding: 0.8em 2em;
+  font-size: 1em;
+  color: #1a73e8;
+  background: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .mission-icons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
+.cta:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  .hero-parallax {
+    background-attachment: scroll; /* Disable fixed background for mobile to prevent jittering */
+  }
 
-    .mission-icons div {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 200px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+  .hero-content {
+    padding: 1.5em;
+  }
 
-    .mission-icons div:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
+  .hero-parallax h1 {
+    font-size: 2.5em;
+  }
 
-    .mission-icons i {
-      font-size: 2rem;
-      color: var(--main-color);
-      margin-bottom: 10px;
-    }
+  .hero-parallax p {
+    font-size: 1em;
+  }
+}
+
+/* Mission Section Styling */
+.mission {
+  text-align: center;
+  padding: 4em 1em;
+  background: linear-gradient(135deg, #f0f4f8, #ffffff);
+  color: #333;
+}
+
+.mission h2 {
+  font-size: 2.8em;
+  margin-bottom: 0.5em;
+  color: #1a73e8;
+  font-weight: bold;
+}
+
+.mission-description {
+  font-size: 1.2em;
+  margin-bottom: 3em;
+  color: #666;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mission-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+
+.mission-item {
+  flex: 1 1 calc(33% - 2em);
+  max-width: 300px;
+  padding: 2em;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  cursor: pointer;
+}
+
+.mission-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+}
+
+.icon-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f8ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.icon-container img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.mission-item:hover .icon-container img {
+  transform: scale(1.1);
+}
+
+.mission-item h3 {
+  font-size: 1.5em;
+  margin: 1em 0 0.5em;
+  color: #333;
+  font-weight: bold;
+}
+
+.mission-item p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.5;
+}
+.icon-container img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease, rotate 0.3s ease;
+}
+
+.mission-item:hover .icon-container img {
+  transform: scale(1.2) rotate(10deg);
+}
+
+
 
     /* Team Section */
     .team {
@@ -401,48 +498,67 @@
     </form>
   </nav>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>About CampusConnect</h1>
-    <p>Empowering collaboration and learning for the next generation.</p>
-    <a href="/" class="cta-home">Go to Home</a>
-  </header>
+<!-- Hero Section with Parallax Background -->
+<header class="hero-parallax" data-aos="fade-up">
+  <div class="hero-content">
+    <h1>Welcome to CampusConnect</h1>
+    <p>Your one-stop platform for seamless campus collaboration.</p>
+    <a href="/signup" class="cta">Get Started</a>
+  </div>
+</header>
 
-  <!-- Mission Section -->
-  <section class="mission">
-    <h2>Our Mission</h2>
-    <div class="mission-icons">
-      <div>
-        <i class="fas fa-graduation-cap"></i>
-        <p>Education First</p>
+<!-- Mission Section -->
+<section class="mission">
+  <h2>Our Mission</h2>
+  <p class="mission-description">
+    Empowering education, fostering community, and driving innovation to shape a better future.
+  </p>
+  <div class="mission-icons">
+    <!-- Education First -->
+    <div class="mission-item">
+      <div class="icon-container">
+        <img src="images/education-first-sticker.png" alt="Education Sticker" />
       </div>
-      <div>
-        <i class="fas fa-users"></i>
-        <p>Community Focus</p>
-      </div>
-      <div>
-        <i class="fas fa-rocket"></i>
-        <p>Innovation</p>
-      </div>
+      <h3>Education First</h3>
+      <p>Providing quality education is at the heart of everything we do.</p>
     </div>
-  </section>
+    <!-- Community Focus -->
+    <div class="mission-item">
+      <div class="icon-container">
+        <img src="images/community-focus-sticker.png" alt="Community Sticker" />
+      </div>
+      <h3>Community Focus</h3>
+      <p>Building a strong and inclusive community through collaboration.</p>
+    </div>
+    <!-- Innovation -->
+    <div class="mission-item">
+      <div class="icon-container">
+        <img src="images/innovation-sticker.png" alt="Innovation Sticker" />
+      </div>
+      <h3>Innovation</h3>
+      <p>Driving change with cutting-edge ideas and technology.</p>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- Team Section -->
   <section class="team">
     <h2>Meet the Team</h2>
     <div class="team-grid">
       <div class="member">
-        <img src="public/images/john.jpg" alt="">
+        <img src="images/john.jpg" alt="">
         <h3>John Doe</h3>
         <p>Founder & CEO</p>
       </div>
       <div class="member">
-        <img src="public/images/girl.jpg" alt="">
+        <img src="/images/girl.jpg" alt="">
         <h3>Jane Smith</h3>
         <p>Lead Developer</p>
       </div>
       <div class="member">
-        <img src="public/images/girl2.jpg" alt="">
+        <img src="/images/girl2.jpg" alt="">
         <h3>Emily Johnson</h3>
         <p>Marketing Manager</p>
       </div>
